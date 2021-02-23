@@ -39,16 +39,44 @@ const InputSearchConditions = (props) => {
 }
 
 function ShowCardInfo(cardInfo){
-  const image = cardInfo.image_uris ? cardInfo.image_uris : {}
-  return(
-    <div className="searchResultContainer">
-      <div className="cardContainer">
-        <div className="item_title">日本語名</div><div className="card_item">{cardInfo.printed_name}</div>
-        <div className="item_title">英語名</div><div className ="card_item">{cardInfo.name}</div>
-        <div className="item_title">固有色</div><div className="card_item">{cardInfo.color_identity}</div>
-        <div className="item_title">テキスト</div><div className="card_item">{cardInfo.printed_text}</div>
+  if(cardInfo.layout === 'normal'){
+    const image = cardInfo.image_uris ? cardInfo.image_uris : {}
+    return(
+      <div className="searchResultContainer">
+        {CreateCardLayout(cardInfo)}
+        <div id="cardImage"><img src={image.small}></img></div>
       </div>
-      <div id="cardImage"><img src={image.small}></img></div>
+    )
+  }else if(cardInfo.layout === 'transform' || cardInfo.layout === 'modal_dfc'){
+    return(
+      cardInfo.card_faces.map((value) => {
+        const image = value.image_uris ? value.image_uris : {}
+        return(
+          <div className="searchResultContainer">
+            {CreateCardLayout(value)}
+            <div id="cardImage"><img src={image.small}></img></div>
+          </div>
+        )
+      })
+    )
+  } else if(cardInfo.layout === 'split'){
+    const image = cardInfo.image_uris ? cardInfo.image_uris : {}
+    return(
+      <div className="searchResultContainer">
+        {cardInfo.card_faces.map(CreateCardLayout)}
+        <div id="cardImage"><img src={image.small}></img></div>
+      </div>
+    )
+  }
+}
+
+const CreateCardLayout = (cardInfo) => {
+  return(
+    <div className="cardContainer">
+      <div className="item_title">日本語名</div><div className="card_item">{cardInfo.printed_name}</div>
+      <div className="item_title">英語名</div><div className ="card_item">{cardInfo.name}</div>
+      <div className="item_title">固有色</div><div className="card_item">{cardInfo.color_identity}</div>
+      <div className="item_title">テキスト</div><div className="card_item">{cardInfo.printed_text}</div>
     </div>
   );
 }
