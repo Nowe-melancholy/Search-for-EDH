@@ -1,0 +1,22 @@
+.splitContainer{
+    display:flex;
+    overflow-x:hidden;
+    white-space:nowrap;
+    width: calc(30vw - 10px);
+}
+
+@media screen and (max-width: 736px) {
+    .splitContainer {
+      width: calc(95vw - 10px);
+    }
+}
+
+.splitCardLayout{
+    width: calc(30vw - 10px);
+}
+
+@media screen and (max-width: 736px) {
+    .splitCardLayout {
+      width: calc(95vw - 10px);
+    }
+ }
