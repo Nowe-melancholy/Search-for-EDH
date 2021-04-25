@@ -1,0 +1,56 @@
+.wrap {
+    position: relative;
+}
+.card_back {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.card{
+    display: flex;
+}
+ 
+/* 表面の表示 */
+.is-front .card_front {
+    opacity: 1;
+    transform: rotateY(0deg);
+    transition:
+        opacity 100ms 150ms,
+        transform 300ms 150ms;
+}
+
+.is-front .card_back {
+    opacity: 0;
+    transform: rotateY(90deg);
+    transition:
+        opacity 50ms 200ms,
+        transform 300ms;
+}
+ 
+/* 裏面の表示 */
+.is-back .card_front {
+    opacity: 0;
+    transform:rotateY(90deg);
+    transition:
+        opacity 50ms 200ms,
+        transform 300ms;
+}
+
+@keyframes r7 {
+    0%   { transform: rotateY(0deg); }
+    100% { transform: rotateY(180deg); }
+}
+
+.is-back .card_back {
+    opacity: 1;
+    transform:rotateY(0deg);
+    transition:
+        opacity 100ms 150ms,
+        transform 300ms 150ms;
+}
+
+@keyframes r8 {
+    0%   { transform: rotateY(180deg); }
+    100% { transform: rotateY(0deg); }
+}
