@@ -1,0 +1,12 @@
+.searchResultContainer{
+    display: flex;
+    margin: 10px 10px 10px 10px;
+    justify-content: center;
+  }
+  
+  @media screen and (max-width: 1000px) {
+    .searchResultContainer {
+      flex-direction: column;
+    }
+  }
+  
