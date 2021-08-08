@@ -31,9 +31,13 @@ const GetCardList = (searchCondition) => {
               if(!oracleIdSet.has(cardInfo.oracle_id)) cardList.push(cardInfo)
             })
         })
-        .then(() => resolve(cardList) )
+        .then(() => resolve(cardList.sort(compareCMC)) )
       })
   })
+}
+
+const compareCMC = (a,b) => {
+  return a.cmc < b.cmc ? -1 : 1;
 }
 
 

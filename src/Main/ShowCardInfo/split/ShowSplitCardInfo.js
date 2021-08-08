@@ -1,5 +1,5 @@
-import './splitContainer.css';
-import CreateCardLayout from './CreateCardLayout'
+import CreateCardLayout from '../CreateCardLayout'
+import './ShowSplitContainer.css';
 
 const ShowSplitCardInfo = (cardInfo, ref1, ref2) => {
   const image = cardInfo.image_uris

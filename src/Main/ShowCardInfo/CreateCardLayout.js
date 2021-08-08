@@ -1,3 +1,5 @@
+import './CardLayoutContainer.css'
+
 const CreateCardLayout = (cardInfo) => {
     return(
       <div className="cardContainer">
@@ -9,8 +11,7 @@ const CreateCardLayout = (cardInfo) => {
 }
 
 const CardName = (cardInfo) => {
-    let cardName
-
+    
     if(cardInfo.printed_name){
         return <div>{cardInfo.printed_name} // {cardInfo.name}</div>
     }else{
@@ -20,9 +21,11 @@ const CardName = (cardInfo) => {
 
 const CardText = (cardInfo) => {
     if(cardInfo.printed_text){
-        return <div>{cardInfo.printed_text}</div>
+        const cardText = cardInfo.printed_text
+        return <div>{cardText}</div>
     } else {
-        return <div>{cardInfo.oracle_text}</div>
+        const cardText = cardInfo.printed_text
+        return <div>{cardText}</div>
     }
 }
 

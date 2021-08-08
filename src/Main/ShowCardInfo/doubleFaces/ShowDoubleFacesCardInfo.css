@@ -1,13 +1,13 @@
-.card {
+.wrap {
     position: relative;
-    width: 250px;
 }
+
 .card_back {
     position: absolute;
     top: 0;
     left: 0;
 }
- 
+
 /* 表面の表示 */
 .is-front .card_front {
     opacity: 1;
@@ -16,6 +16,7 @@
         opacity 100ms 150ms,
         transform 300ms 150ms;
 }
+
 .is-front .card_back {
     opacity: 0;
     transform: rotateY(90deg);
@@ -32,6 +33,7 @@
         opacity 50ms 200ms,
         transform 300ms;
 }
+
 .is-back .card_back {
     opacity: 1;
     transform:rotateY(0deg);
@@ -39,3 +41,29 @@
         opacity 100ms 150ms,
         transform 300ms 150ms;
 }
+
+.rotateButton{
+    display:block;
+  width:70px;
+  height:70px;
+  margin:1em auto;
+  line-height:70px;
+  background:gray;
+  border-radius:100%;
+  color:#fff;
+  font-size:15px;
+  font-weight:bold;
+  text-decoration:none;
+  text-align:center;
+}
+
+.doubleFacesContainer{
+    display: flex;
+    justify-content: center;
+  }
+  
+  @media screen and (max-width: 1000px) {
+    .doubleFacesContainer {
+      flex-direction: column;
+    }
+  }
