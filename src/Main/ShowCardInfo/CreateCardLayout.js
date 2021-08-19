@@ -13,9 +13,11 @@ const CreateCardLayout = (cardInfo) => {
 const CardName = (cardInfo) => {
     
     if(cardInfo.printed_name){
-        return <div>{cardInfo.printed_name} // {cardInfo.name}</div>
+        let wikiURL = "http://mtgwiki.com/wiki/" + cardInfo.printed_name + "/" + cardInfo.name
+        return <div><a href={wikiURL} target="_blank" rel="noopener noreferrer">{cardInfo.printed_name} // {cardInfo.name}</a></div>
     }else{
-        return <div>{cardInfo.name}</div>
+        let wikiURL = "http://mtgwiki.com/wiki/" + cardInfo.name
+        return <div><a href={wikiURL} target="_blank" rel="noopener noreferrer">{cardInfo.name}</a></div>
     }
 }
 
@@ -24,7 +26,7 @@ const CardText = (cardInfo) => {
         const cardText = cardInfo.printed_text
         return <div>{cardText}</div>
     } else {
-        const cardText = cardInfo.printed_text
+        const cardText = cardInfo.oracle_text
         return <div>{cardText}</div>
     }
 }
