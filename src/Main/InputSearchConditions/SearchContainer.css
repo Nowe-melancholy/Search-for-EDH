@@ -1,0 +1,17 @@
+.searchContainer{
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: 10% 90%;
+}
+  
+@media screen and (max-width: 1000px) {
+    .searchContainer {
+      grid-auto-columns: auto;
+      grid-template-columns: 20% 80%;
+      width: calc(93vw - 10px);
+    }
+}
+    
+.search_item {
+    padding: .25rem .25rem .25rem .5rem;
+}
