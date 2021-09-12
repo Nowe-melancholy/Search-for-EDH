@@ -11,13 +11,37 @@ const CreateCardLayout = (cardInfo) => {
 }
 
 const CardName = (cardInfo) => {
+
+    let edhRecLink = ""
+    if((cardInfo.type_line.match("Legendary") && cardInfo.type_line.match("Creature")) || cardInfo.oracle_text.match("can be your commander")){
+        edhRecLink = "https://edhrec.com/commanders/" + cardInfo.name.replace(/, /g, "-").replace(/ /g, "-").toLowerCase()
+    }
     
     if(cardInfo.printed_name){
         let wikiURL = "http://mtgwiki.com/wiki/" + cardInfo.printed_name + "/" + cardInfo.name
-        return <div><a href={wikiURL} target="_blank" rel="noopener noreferrer">{cardInfo.printed_name} // {cardInfo.name}</a></div>
+        if(edhRecLink){
+            return(
+                <div>
+                    <div><a href={wikiURL} target="_blank" rel="noopener noreferrer">{cardInfo.printed_name} // {cardInfo.name}</a></div>
+                    <div><a href={edhRecLink} style={{fontSize: 13}} target="_blank" rel="noopener noreferrer">EDHREC</a></div>
+                </div>
+            )
+        }else{
+            return <div><a href={wikiURL} target="_blank" rel="noopener noreferrer">{cardInfo.printed_name} // {cardInfo.name}</a></div>
+        }
+        
     }else{
         let wikiURL = "http://mtgwiki.com/wiki/" + cardInfo.name
-        return <div><a href={wikiURL} target="_blank" rel="noopener noreferrer">{cardInfo.name}</a></div>
+        if(edhRecLink){
+            return(
+                <div>
+                    <div><a href={wikiURL} target="_blank" rel="noopener noreferrer">{cardInfo.name}</a></div>
+                    <div><a href={edhRecLink} style={{fontSize: 13}} target="_blank" rel="noopener noreferrer">EDHREC</a></div>
+                </div>
+            )
+        }else{
+            return <div><a href={wikiURL} target="_blank" rel="noopener noreferrer">{cardInfo.name}</a></div>
+        }
     }
 }
 
